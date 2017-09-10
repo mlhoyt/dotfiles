@@ -1,0 +1,20 @@
+[color]
+	ui = auto
+
+[push]
+	default = simple
+
+[fetch]
+	prune = true
+
+[core]
+	editor = /usr/bin/vim
+	autocrlf = input
+	mergeoptions = --no-edit
+
+[alias]
+	logtree = log --graph --all --decorate --oneline
+
+# Use separate file for username / github token / etc
+[include]
+	path = ~/.gitconfig.local
