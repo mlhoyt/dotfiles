@@ -4,6 +4,12 @@
   "build-make": {}
   core:
     allowPendingPaneItems: false
+    customFileTypes:
+      "source.yaml": [
+        ".yaml.tmpl"
+        ".yml.tmpl"
+        ".tmpl"
+      ]
     reopenProjectMenuCount: 5
     telemetryConsent: "limited"
   editor:
@@ -14,12 +20,15 @@
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "3bb5f158-3714-4e0f-8c87-7a8d64eb1b42"
+  "force-tab":
+    honorSoftTabs: false
   "git-diff":
     showIconsInEditorGutter: true
   "linter-pylama":
     usePep257: false
     usePep8: false
-  "linter-ui-default": {}
+  "linter-ui-default":
+    panelHeight: 69
   "markdown-preview":
     breakOnSingleNewline: true
     grammars: [
