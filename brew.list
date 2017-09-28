@@ -1,0 +1,31 @@
+tree
+## --- Infrastructure
+# virtualbox (cask)
+# vagrant (cask)
+# vagrant-manager (cask)
+## terraform
+## ansible
+## kubernetes: kubectl, minikube
+# docker (cask)
+# awscli
+# iterm2
+## --- Security
+## OpenVPN
+# gpgtools
+## Vault
+## --- Data(base)
+## cassandra (DataStacks Enterprise - dse)
+## postgre db cli
+## kafka (Confluent)
+## --- Development
+## --- :CICD
+## concourse: fly
+## --- :Coding
+# atom (cask)
+# apm ?
+# golang
+# gogland (cask)
+# python
+# jq
+# npm
+# wget
