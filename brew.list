@@ -1,3 +1,7 @@
+caskroom/cask/atom
+caskroom/cask/goland
+golang
+gnupg
 tree
 ## --- Infrastructure
 # virtualbox (cask)
@@ -11,7 +15,6 @@ tree
 # iterm2
 ## --- Security
 ## OpenVPN
-# gpgtools
 ## Vault
 ## --- Data(base)
 ## cassandra (DataStacks Enterprise - dse)
@@ -21,10 +24,7 @@ tree
 ## --- :CICD
 ## concourse: fly
 ## --- :Coding
-# atom (cask)
 # apm ?
-# golang
-# gogland (cask)
 # python
 # jq
 # npm
