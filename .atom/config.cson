@@ -6,9 +6,9 @@
     allowPendingPaneItems: false
     customFileTypes:
       "source.yaml": [
-        ".yaml.tmpl"
-        ".yml.tmpl"
-        ".tmpl"
+        "yaml.tmpl"
+        "yml.tmpl"
+        "tmpl"
       ]
     reopenProjectMenuCount: 5
     telemetryConsent: "limited"
