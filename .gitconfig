@@ -1,3 +1,7 @@
+# [user]
+# 	name = ...
+# 	email = ...
+
 [color]
 	ui = auto
 
