@@ -2,6 +2,7 @@ caskroom/cask/atom
 caskroom/cask/goland
 golang
 gnupg
+jq
 tree
 ## --- Infrastructure
 # virtualbox (cask)
