@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+_outfile=${1:-~/dotfiles/brew/list.brew}
+
+brew list \
+    | perl -pe 's/\s+/\n/g' \
+    | sort \
+    > ${_outfile}
+
