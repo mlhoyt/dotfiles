@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_outfile=${1:-~/.atom/packages.list}
+_outfile=${1:-~/dotfiles/atom/packages.list}
 
 grep '^[ ]*\"version"' ~/.atom/packages/*/package.json \
     | sed 's/[:\",]//g' \
