@@ -1,7 +1,3 @@
-# [user]
-# 	name = ...
-# 	email = ...
-
 [color]
 	ui = auto
 
@@ -19,6 +15,6 @@
 [alias]
 	logtree = log --graph --all --decorate --oneline
 
-# Use separate file for username / github token / etc
+# Use separate file for username, github token, etc
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.gitcredentials
