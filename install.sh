@@ -18,19 +18,21 @@ ls -al ${HOME}/.profile
 printf "so ${DOTFILES_ROOT}/vim/vimrc.vim\n" > ${HOME}/.vimrc
 ls -al ${HOME}/.vimrc
 
+# install "git"
+ln -sf ${DOTFILES_ROOT}/git/config ${HOME}/.gitconfig
+# install git bash completion
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ${HOME}/.git-completion-bash
+
 # install "atom"
 ln -sf ${DOTFILES_ROOT}/atom ${HOME}/.atom
 ls -al ${HOME}/.atom
 
 # # install "dot" files
-# for i in .gitattributes .gitconfig .gnupg bin
+# for i in .gitattributes .gnupg bin
 # do
 #   ln -s ${DOTFILES_ROOT}/$i ${HOME}/$i
 # done
 # 
-# # install git bash completion
-# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ${HOME}/.git-completion-bash
-# echo "source ${HOME}/.git-completion-bash" >> ${HOME}/.bashrc
 # 
 # # install brew
 # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

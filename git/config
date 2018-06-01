@@ -1,20 +1,21 @@
 [color]
-	ui = auto
+  ui = auto
 
 [push]
-	default = simple
+  default = simple
 
 [fetch]
-	prune = true
+  prune = true
 
 [core]
-	editor = /usr/bin/vim
-	autocrlf = input
-	mergeoptions = --no-edit
+  editor = /usr/bin/vim
+  autocrlf = input
+  mergeoptions = --no-edit
 
 [alias]
-	logtree = log --graph --all --decorate --oneline
+  logtree = log --graph --all --decorate --oneline --abbrev-commit
+  stat = status
 
 # Use separate file for username, github token, etc
 [include]
-	path = ~/.gitcredentials
+  path = ~/.gitcredentials
