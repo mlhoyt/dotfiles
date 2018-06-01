@@ -46,7 +46,6 @@
     useGitHubStyle: true
   pigments:
     groupPaletteColors: "by file"
-    markerType: "dot"
     mergeColorDuplicates: true
   "tree-view":
     hideIgnoredNames: true
