@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-_outfile=${1:-~/dotfiles/atom/packages.list}
+set -E -o errexit -o nounset -o pipefail
+trap "echo Error encountered -- exiting!" ERR
 
-grep '^[ ]*\"version"' ~/.atom/packages/*/package.json \
-    | sed 's/[:\",]//g' \
-    | perl -pe 's|^.*/.atom/packages/||' \
-    | perl -pe 's|/package.json||' \
-    | perl -nae 'print "$F[0]\@$F[2]\n";' \
-    > ${_outfile}
+_outfile=${1:-${HOME}/dotfiles/atom/packages.list}
 
+(
+  for jsonFile in ${HOME}/.atom/packages/*/package.json
+  do
+    cat ${jsonFile} | jq -r '._id'
+  done
+) | sort > ${_outfile}
