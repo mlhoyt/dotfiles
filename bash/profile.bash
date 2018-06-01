@@ -30,12 +30,15 @@ export PATH=${PATH}:${GOBIN}
 
 # Git
 parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ [\1]/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
 # Prompt
 # * see: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
-# export PS1="\h:\W \u\$ "
-#=> <HOSTNAME>:<DIR> <LOGNAME>$ 
-export PS1="\[\033[7;30m\]\u@\h\[\033[0m\] \[\033[7;34m\]\W\[\033[0m\]\[\033[1;31m\]\$(parse_git_branch)\[\033[00m\]$ "
-
+# export PS1="\u@\h \W $(parse_git_branch)\$ "
+# C1="\e[1;34m"
+C1="\e[7;39m"
+C2="\e[7;33m"
+C3="\e[7;31m"
+CRST="\e[0m"
+export PS1="\[\033]0;\007\]\[${C1}\]\u@\h\[${CRST}\] \[${C2}\]\W\[${CRST}\] \[${C3}\][\$(parse_git_branch)]\[${CRST}\]$ "
