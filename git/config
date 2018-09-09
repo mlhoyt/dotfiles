@@ -9,13 +9,14 @@
 
 [core]
   editor = /usr/bin/vim
-  autocrlf = input
-  mergeoptions = --no-edit
 
 [alias]
   logtree = log --graph --all --decorate --oneline --abbrev-commit
   stat = status
 
-# Use separate file for username, github token, etc
+[url "git@github.com"]
+  insteadOf = https://github.com/
+
+# Use separate file for username, API token, etc
 [include]
   path = ~/.gitcredentials
