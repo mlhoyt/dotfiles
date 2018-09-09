@@ -1,7 +1,7 @@
 # -*- sh -*-
 
-alias vi=/usr/bin/vim
-alias vim=/usr/bin/vim
+alias vi=/usr/local/bin/vim
+alias vim=/usr/local/bin/vim
 set -o vi
 tabs -2
 
