@@ -1,43 +1,78 @@
 # -*- sh -*-
 
+alias vi=/usr/bin/vim
+alias vim=/usr/bin/vim
+set -o vi
+tabs -2
+
 alias ll="ls -al"
 
-set -o vi
+export EDITOR="vim"
 
-# Brew
-# open https://github.com/settings/tokens/new?scopes=gist,public_repo&description=Homebrew
-# export HOMEBREW_GITHUB_API_TOKEN="..."
+# PATH
+export PATH=${PATH}:${HOME}/bin
 
-# Perl
-export PERL5LIB="${HOME}/perl5/lib"
+# bash-completion
 
 # dos2ux
 alias dos2ux="tr -d '\r'"
 
-# Go (brew install golang)
+# Perl
+export PERL5LIB="${HOME}/perl5/lib"
+
+# Git
+## bash-completion
+source ${HOME}/.git-completion-bash
+## PS1util
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+# VirtualBox
+
+# Vagrant
+
+# Bosh
+
+# Terraform (brew install tfenv)
+
+# Ansible
+
+# Docker
+
+# Concourse
+
+# Jenkins
+
+# GPGTools
+
+# Golang (brew install golang)
 export GOPATH=${HOME}/go
 export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
+
+# Kubernetes
 
 # Scala (brew install scala)
 # alias scala="scala-2.11"
 # alias scalac="scalac-2.11"
 
-# Atom (brew cask install atom)
-
 # JavaScript
 # alias jsc=/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc
 
-# Git
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+# Atom (brew cask install atom)
+
+# Misc
+random-string() {
+  # OPTIONS: [(LENGTH:-32) [(COUNT:-1)]]
+  export LC_CTYPE=C
+  cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n ${2:-1}
 }
-## enable git bash completion
-# source ${HOME}/.git-completion-bash
 
 # Prompt
-# * see: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
-# export PS1="\u@\h \W $(parse_git_branch)\$ "
+# see: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
+# see: http://www.ltg.ed.ac.uk/~richard/utf-8.cgi?input=(UNICDE)&mode=hex c=$(printf "\x..\x..\x..")
+# export PS1="\u@\h \W\$ "
 C1="\e[7;39m"
 C2="\e[7;33m"
 C3="\e[7;31m"
