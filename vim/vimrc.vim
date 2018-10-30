@@ -5,11 +5,13 @@ filetype off      " Vundle:required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'fatih/vim-go'
+Plugin 'scrooloose/nerdtree'          " File browser
+Plugin 'Xuyuanp/nerdtree-git-plugin'  " Git: status (for NERDTree)
+Plugin 'airblade/vim-gitgutter'       " Git: diff
+Plugin 'tpope/vim-commentary'
+Plugin 'fatih/vim-go'                 " Golang
 Plugin 'hashivim/vim-terraform'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-commentary'
 call vundle#end()
 filetype plugin indent on
 
@@ -17,6 +19,8 @@ filetype plugin indent on
 let mapleader = "."
 map <leader>t :NERDTreeToggle<CR>
 map <leader>w <C-w>
+
+map <leader>dh :GitGutterLineHighlightsToggle<CR>
 
 " vim-go key bindings
 " map <C-j> :cnext<CR>
@@ -47,10 +51,10 @@ let mapleader = "\\"
 
 " Indentation: spaces-only (http://vim.wikia.com/wiki/Indenting_source_code)
 " set autoindent
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set expandtab      " No tabs
+set tabstop=2      " The One True Tab
+set shiftwidth=2   " Number of spaces to shift for autoindent or >,<
+set softtabstop=2  " Spaces 'feel' like tabs
 
 " Code Folding
 set foldmethod=syntax
@@ -76,3 +80,6 @@ set autowrite
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+set listchars=tab:»\ ,extends:›,precedes:‹,space:·,trail:~,eol:=
+set nolist
