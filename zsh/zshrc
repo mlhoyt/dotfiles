@@ -5,7 +5,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # NOTE: Too many plugins slow down shell startup.
 plugins=(
+  aws
+  docker
   git
+  golang
+  terraform
 )
 
 source $ZSH/oh-my-zsh.sh
