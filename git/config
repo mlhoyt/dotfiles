@@ -14,9 +14,12 @@
   logtree = log --graph --all --decorate --oneline --abbrev-commit
   stat = status
 
-# [url "git@github.com"]
-#   insteadOf = https://github.com/
+[url "git@github.com:"]
+  insteadOf = https://github.com/
 
 # Use separate file for username, API token, etc
 [include]
   path = ~/.gitcredentials
+
+[commit]
+	gpgsign = true
