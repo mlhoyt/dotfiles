@@ -13,17 +13,18 @@ export EDITOR="vim"
 export PATH=${PATH}:${HOME}/bin
 
 # bash-completion
+# [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # dos2ux
 alias dos2ux="tr -d '\r'"
 
 # Perl
-export PERL5LIB="${HOME}/perl5/lib"
+export PERL5LIB=${HOME}/perl5/lib
 
 # Git
 ## bash-completion
 source ${HOME}/.git-completion-bash
-## PS1util
+## PS1 util
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
@@ -59,8 +60,6 @@ export PATH=${PATH}:${GOBIN}
 
 # JavaScript
 # alias jsc=/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc
-
-# Atom (brew cask install atom)
 
 # Misc
 random-string() {
