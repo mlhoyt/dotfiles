@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+fromDate=${1//-/,} # YYYY-MM-DD
+toDate=${2//-/,} # YYYY-MM-DD
+
+python3 -c "from datetime import date; print ((date(${toDate})-date(${fromDate})).days)"

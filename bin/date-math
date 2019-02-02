@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+
+# https://docs.python.org/3/library/datetime.html
+
+import datetime
+
+print ("Today")
+print (datetime.date.today())
+print ("Today.isoformat")
+print ((datetime.date.today()).isoformat())
+print ("Today + 1")
+print ((datetime.date.today() + datetime.timedelta(1)))
+
+print ("Now")
+print (datetime.datetime.now())
+print ("Now.isoformat")
+print ((datetime.datetime.now()).isoformat())
+print ("Now + 1-day, 1-hour")
+print ((datetime.datetime.now() + datetime.timedelta(days=1, hours=1)))
+
+print ("Now(UTC)")
+print (datetime.datetime.utcnow())
+print ("Now(UTC).isoformat")
+print ((datetime.datetime.utcnow()).isoformat())
+print ("Now(UTC) + 1-day, 1-hour")
+print ((datetime.datetime.utcnow() + datetime.timedelta(days=1, hours=1)))
+
+print ("Now")
+print (datetime.datetime.now().tzinfo)
+print ("Now(UTC)")
+print (datetime.datetime.utcnow().tzinfo)
