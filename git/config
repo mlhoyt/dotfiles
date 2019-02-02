@@ -9,6 +9,7 @@
 
 [core]
   editor = /usr/local/bin/vim
+  pager = less -F -X
 
 [alias]
   logtree = log --graph --all --decorate --oneline --abbrev-commit
@@ -20,6 +21,9 @@
 # Use separate file for username, API token, etc
 [include]
   path = ~/.gitcredentials
+
+[hub]
+  protocol = ssh
 
 [commit]
 	gpgsign = true
