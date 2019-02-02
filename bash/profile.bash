@@ -53,6 +53,7 @@ export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
 
 # Kubernetes
+# source ${HOME}/.kube/setup_env.sh
 
 # Scala (brew install scala)
 # alias scala="scala-2.11"
