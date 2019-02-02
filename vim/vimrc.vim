@@ -29,6 +29,8 @@ let mapleader = ","
 noremap <leader>/ :Commentary<CR>
 map <leader>j :cnext<CR>
 map <leader>k :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+nnoremap <leader>i :GoInfo<CR>
 " autocmd FileType go nmap <leader>i <Plug>(go-info)
 " autocmd FileType go nmap <leader>r <Plug>(go-run)
 " autocmd FileType go nmap <leader>b <Plug>(go-build)
@@ -81,5 +83,6 @@ autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Whitespace character visibility
 set listchars=tab:»\ ,extends:›,precedes:‹,space:·,trail:~,eol:=
 set nolist
