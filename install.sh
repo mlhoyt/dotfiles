@@ -23,6 +23,9 @@ ls -al ${HOME}/.zshrc
 printf "so ${DOTFILES_ROOT}/vim/vimrc.vim\n" > ${HOME}/.vimrc
 ls -al ${HOME}/.vimrc
 
+## install "bin"
+ln -sf ${DOTFILES_ROOT}/bin ${HOME}/bin
+
 ## install "git"
 ln -sf ${DOTFILES_ROOT}/git/config ${HOME}/.gitconfig
 ln -sf ${DOTFILES_ROOT}/git/attributes ${HOME}/.gitattributes
