@@ -6,6 +6,8 @@ trap "echo Error encountered -- exiting!" ERR
 
 ## install XCode (xcode-select --install)
 
+# git clone https://github.com/<GITHUB-USERNAME>/dotfiles.git ${HOME}/dotfiles
+
 DOTFILES_ROOT=$( cd "$(dirname "$0")" ; pwd -P )
 
 ## install "zsh"
