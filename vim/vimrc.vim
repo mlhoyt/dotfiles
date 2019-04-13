@@ -31,6 +31,7 @@ map <leader>j :cnext<CR>
 map <leader>k :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 nnoremap <leader>i :GoInfo<CR>
+let g:go_auto_type_info = 1
 " autocmd FileType go nmap <leader>i <Plug>(go-info)
 " autocmd FileType go nmap <leader>r <Plug>(go-run)
 " autocmd FileType go nmap <leader>b <Plug>(go-build)
