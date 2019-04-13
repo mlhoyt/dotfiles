@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+GH_ORG=${1:-not-an-org}
+GH_REPO=${2:-not-a-repo}
+
+GH_TOKEN=$(cat ${HOME}/.config/hub | grep oauth_token | awk '{print $2}' | tr -d '\n')
+
+curl \
+  -s \
+  -H "Authorization: token ${GH_TOKEN}" \
+  -H "Accept: application/vnd.github.v3+json" \
+  -X GET https://api.github.com/repos/${GH_ORG}/${GH_REPO}/tags \
+| jq '.[].name'
