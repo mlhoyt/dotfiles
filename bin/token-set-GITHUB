@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+GH_TOKEN=$(cat ${HOME}/.config/hub | grep oauth_token | awk '{print $2}' | tr -d '\n')
+
+export GITHUB_TOKEN=${GH_TOKEN}
+export GITHUB_OAUTH_TOKEN=${GH_TOKEN}
