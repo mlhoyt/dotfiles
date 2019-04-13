@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+# USAGE:
+# $ ./bin/print-unicode-char 2717
+# #=> 2717
+# #=> ✗
+
+import sys
+
+if len(sys.argv) > 1:
+    print sys.argv[1]
+    c = '\u%s' % (sys.argv[1])
+    print c.decode('unicode-escape')
