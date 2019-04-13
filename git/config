@@ -14,6 +14,8 @@
 [alias]
   logtree = log --graph --all --decorate --oneline --abbrev-commit
   stat = status
+  current-branch = rev-parse --abbrev-ref HEAD
+  show-changed-files = show --name-only --pretty=""
 
 [url "git@github.com:"]
   insteadOf = https://github.com/
