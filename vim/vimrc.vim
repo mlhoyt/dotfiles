@@ -1,7 +1,21 @@
 set nocompatible  " Use Vim defaults instead of 100% vi compatibility Vundle:required
 filetype off      " Vundle:required
 
+" disable audible bell
+set visualbell
+set t_vb=
+
+" https://hackernoon.com/the-last-statusline-for-vim-a613048959b2
+set laststatus=2
+set statusline=
+set statusline+=%f        " path
+set statusline+=%=        " switch to right side
+set statusline+=%1*%y%*\  " file type
+set statusline+=(%l,%c)\  " line and column
+set statusline+=%L        " total lines
+
 " vim +PluginInstall +qall
+" vim +PluginUpdate +qall
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -12,11 +26,15 @@ Plugin 'tpope/vim-commentary'
 Plugin 'fatih/vim-go'                 " Golang
 Plugin 'hashivim/vim-terraform'
 Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
 
 " NERDTree key bindings
 let mapleader = "."
+" Fix NERDTree ^G before file/folder names - https://stackoverflow.com/questions/53657545/nerdtree-g-before-folder-and-file-names-osx-terminal-vim
+let g:NERDTreeNodeDelimiter = "\u00a0"
 map <leader>t :NERDTreeToggle<CR>
 map <leader>w <C-w>
 
@@ -49,6 +67,12 @@ let g:go_highlight_build_constraints = 1
 let g:terraform_fold_sections=1
 let g:terraform_remap_spacebar=1
 " let g:terraform_fmt_on_save=1
+
+" YCM - YouCompleteMe
+" disable auto_triggering ycm suggestions pane and instead use semantic completion only on Ctrl+n
+" let ycm_trigger_key = '<C-n>'
+" let g:ycm_auto_trigger = 0
+" let g:ycm_key_invoke_completion = ycm_trigger_key
 
 let mapleader = "\\"
 
