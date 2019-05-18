@@ -3,7 +3,7 @@
 GH_ORG=${1:-not-an-org}
 GH_REPO=${2:-not-a-repo}
 
-GH_TOKEN=$(cat ${HOME}/.config/hub | grep oauth_token | awk '{print $2}' | tr -d '\n')
+GH_TOKEN=$(get-github-oauth-token)
 
 curl \
   -s \
