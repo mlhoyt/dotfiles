@@ -27,9 +27,10 @@ Plugin 'fatih/vim-go'                 " Golang
 Plugin 'hashivim/vim-terraform'
 Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
+syntax on
 
 " NERDTree key bindings
 let mapleader = "."
@@ -62,6 +63,7 @@ let g:go_highlight_function_calls = 1
 " let g:go_highlight_operators = 1
 " let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
+let g:go_def_mode='gopls'
 
 " vim-terraform
 let g:terraform_fold_sections=1
@@ -89,7 +91,6 @@ set foldnestmax=1
 set foldlevelstart=10
 
 " General Vim settings
-syntax on
 set number
 set ruler
 " set ff=unix
