@@ -23,30 +23,43 @@ Plugin 'scrooloose/nerdtree'          " File browser
 Plugin 'Xuyuanp/nerdtree-git-plugin'  " Git: status (for NERDTree)
 Plugin 'airblade/vim-gitgutter'       " Git: diff
 Plugin 'tpope/vim-commentary'
+" Golang
 Plugin 'fatih/vim-go'                 " Golang
+" Terraform
 Plugin 'hashivim/vim-terraform'                " Terraform
 Plugin 'juliosueiras/vim-terraform-completion' " Terraform
+" Javascript
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'majutsushi/tagbar'
 call vundle#end()
 filetype plugin indent on
 syntax on
 
-" NERDTree key bindings
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+
 let mapleader = "."
+
+" NERDTree settings / key bindings
 " Fix NERDTree ^G before file/folder names - https://stackoverflow.com/questions/53657545/nerdtree-g-before-folder-and-file-names-osx-terminal-vim
 let g:NERDTreeNodeDelimiter = "\u00a0"
 map <leader>t :NERDTreeToggle<CR>
 map <leader>w <C-w>
 
+" vim-gitgutter settings / key bindings
 map <leader>dh :GitGutterLineHighlightsToggle<CR>
 
-" vim-go key bindings
+let mapleader = ","
+
+" vim-commentary settings / key bindings
+noremap <leader>/ :Commentary<CR>
+
+" vim-go settings / key bindings
 " map <C-j> :cnext<CR>
 " map <C-k> :cprevious<CR>
-let mapleader = ","
-noremap <leader>/ :Commentary<CR>
 map <leader>j :cnext<CR>
 map <leader>k :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
@@ -64,17 +77,25 @@ let g:go_highlight_function_calls = 1
 " let g:go_highlight_operators = 1
 " let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
+let g:go_debug_windows = {
+  \ 'stack': 'leftabove 20vnew',
+  \ 'out':   'botright 10new',
+  \ 'vars':  'leftabove 50vnew',
+\ }
 
-" vim-terraform
+" vim-terraform settings / key bindings
 let g:terraform_fold_sections=1
 let g:terraform_remap_spacebar=1
 " let g:terraform_fmt_on_save=1
 
-" YCM - YouCompleteMe
+" YouCompleteMe settings / key bindings
 " disable auto_triggering ycm suggestions pane and instead use semantic completion only on Ctrl+n
 let ycm_trigger_key = '<C-n>'
 let g:ycm_auto_trigger = 0
 let g:ycm_key_invoke_completion = ycm_trigger_key
+
+" Omni Completion (vim builtin??)
+" trigger = <C-x><C-o>
 
 let mapleader = "\\"
 
@@ -100,6 +121,7 @@ hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=b
 set dir=/tmp/
 set hlsearch
 set incsearch
+" Allow <tab> to jump to matching enclosure (paren, bracket, sqbracket, etc)
 map <tab> %
 
 " Enables automatic file write on specific commands
