@@ -57,6 +57,13 @@ let mapleader = ","
 " vim-commentary settings / key bindings
 noremap <leader>/ :Commentary<CR>
 
+" Tagbar settings / key bindings
+map <C-n> :TagbarToggle<CR>
+map <leader>n :TagbarToggle<CR>
+
+" Quick paste key bindings
+map <leader>p :r! pbpaste<CR>
+
 " vim-go settings / key bindings
 " map <C-j> :cnext<CR>
 " map <C-k> :cprevious<CR>
