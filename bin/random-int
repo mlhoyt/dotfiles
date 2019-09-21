@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# OPTIONS:
+MAX=${MAX:-32767}
+MIN=${MIN:-0}
+
+INT_MAX=$(( MAX - MIN ))
+echo $(( RANDOM % INT_MAX + MIN ))
