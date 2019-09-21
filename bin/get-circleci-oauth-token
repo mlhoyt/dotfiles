@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cat ${HOME}/.config/circleci \
+  | grep oauth_token \
+  | awk '{print $2}' \
+  | tr -d '\n'
