@@ -4,7 +4,7 @@ $foundColumns = 0;
 @COLUMNS = ();
 @DATA = ();
 
-# Parse input WSV MySQL SELECT syntax
+# Parse input TABLE MySQL SELECT syntax
 while(<>) {
   next if( /^\s*$/ || /^\+\-+/ );
 
@@ -20,8 +20,8 @@ while(<>) {
     @fields = split( /\s*\|\s*/ );
 
     my @json_items = ();
-    for ( my $i=0; $i < $#COLUMNS; $i++ ) {
-      push @json_items, sprintf("\"%s\": \"%s\"", $COLUMNS[$i], $fields[$i]);
+    for ( my $i=0; $i < (scalar @COLUMNS); $i++ ) {
+      push @json_items, sprintf("\"%s\":\"%s\"", $COLUMNS[$i], $fields[$i]);
     }
 
     push @DATA, sprintf("{%s}", join(", ", @json_items));
