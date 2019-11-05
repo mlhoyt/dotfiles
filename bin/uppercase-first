@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+main() {
+  val=${1}
+  echo $(tr '[:lower:]' '[:upper:]' <<< ${1:0:1})${1:1}
+}
+
+main ${1}
