@@ -72,7 +72,6 @@ map <leader>k :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 nnoremap <leader>i :GoInfo<CR>
 " let g:go_auto_type_info = 1
-" autocmd FileType go nmap <leader>i <Plug>(go-info)
 " autocmd FileType go nmap <leader>r <Plug>(go-run)
 " autocmd FileType go nmap <leader>b <Plug>(go-build)
 " let g:go_list_type = "quickfix"
@@ -89,11 +88,13 @@ let g:go_debug_windows = {
   \ 'out':   'botright 10new',
   \ 'vars':  'leftabove 50vnew',
 \ }
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 " vim-terraform settings / key bindings
 let g:terraform_fold_sections=1
 let g:terraform_remap_spacebar=1
-" let g:terraform_fmt_on_save=1
+let g:terraform_fmt_on_save=1
 
 " YouCompleteMe settings / key bindings
 " disable auto_triggering ycm suggestions pane and instead use semantic completion only on Ctrl+n
@@ -139,5 +140,9 @@ autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Whitespace character visibility
+" ref: https://www.barcodefaq.com/knowledge-base/mac-extended-ascii-character-chart/
+" 200 = » = <opt>+<shft>+\
+" 224 = ‡ = <opt>+<shft>+7
 set listchars=tab:»\ ,extends:›,precedes:‹,space:·,trail:~,eol:=
+" set listchars=tab:»\ ,space:\ ,trail:~,eol:\ 
 set nolist
