@@ -83,13 +83,16 @@ let g:go_highlight_function_calls = 1
 " let g:go_highlight_operators = 1
 " let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
-let g:go_debug_windows = {
-  \ 'stack': 'leftabove 20vnew',
-  \ 'out':   'botright 10new',
-  \ 'vars':  'leftabove 50vnew',
-\ }
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_debug_windows = {
+  \ 'stack': 'leftabove 30vnew',
+  \ 'vars':  'leftabove 70vnew',
+  \ 'out':   'botright 10new',
+\ }
+" 'goroutines': 'botright 10new',
+let g:go_debug_log_output = 'debugger'
+let g:go_highlight_debug = 1
 
 " vim-terraform settings / key bindings
 let g:terraform_fold_sections=1
@@ -104,6 +107,17 @@ let g:ycm_key_invoke_completion = ycm_trigger_key
 
 " Omni Completion (vim builtin??)
 " trigger = <C-x><C-o>
+
+let mapleader = "<"
+
+" vim-go debugger settings
+map <leader>s :GoDebugStart<CR>
+map <leader>b :GoDebugBreakpoint<CR>
+map <leader>c :GoDebugContinue<CR>
+map <leader>n :GoDebugNext<CR>
+map <leader>i :GoDebugStep<CR>
+map <leader>o :GoDebugStepOut<CR>
+map <leader>x :GoDebugStop<CR>
 
 let mapleader = "\\"
 
