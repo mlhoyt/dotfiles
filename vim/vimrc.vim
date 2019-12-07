@@ -76,13 +76,13 @@ nnoremap <leader>i :GoInfo<CR>
 " autocmd FileType go nmap <leader>b <Plug>(go-build)
 " let g:go_list_type = "quickfix"
 let g:go_auto_sameids = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_function_calls = 1
+" " let g:go_highlight_operators = 1
+" " let g:go_highlight_extra_types = 1
+" let g:go_highlight_build_constraints = 1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_debug_windows = {
