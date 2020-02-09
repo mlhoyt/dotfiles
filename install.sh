@@ -47,3 +47,17 @@ curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 # do
 #   npm install -g ${i}
 # done
+
+## Update ~/.editrc
+## man editrc
+## For software that uses 'editline'
+cat > ~/.editrc <<EOHI
+bind -v
+EOHI
+
+# ## Update ~/.inputrc
+# ## Possibly bash specific
+# cat > ~/.inputrc <<EOHI
+# set editing-mode vi
+# set keymap vi
+# EOHI
