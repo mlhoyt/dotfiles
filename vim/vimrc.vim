@@ -33,7 +33,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 call vundle#end()
 filetype plugin indent on
