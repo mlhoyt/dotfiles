@@ -40,6 +40,20 @@ alias grep="grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.terraform}
 # ${HOME}/bin
 export PATH=${PATH}:${HOME}/bin
 
+# notebook
+alias notebook="cd ~/go/src/github.com/mlhoyt/notebook"
+
+# timestamp
+alias timestamp='date +"%Y%m%d%H%M%S"'
+
+# set-size
+# printf '\e[8;<LINES>;<COLUMNS>t'
+
+# set-title
+function set-title {
+    echo -ne "\033]0;"$*"\007"
+}
+
 # dos2ux
 alias dos2ux="tr -d '\r'"
 
@@ -49,10 +63,19 @@ alias make=gmake
 # Perl
 export PERL5LIB="${HOME}/perl5/lib"
 
+# Python
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # Golang (brew install golang)
 export GOPATH=${HOME}/go
 export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
+# export GO111MODULE=on ## Shouldn't be needed with golang=v1.13
+
+# Glasgow Haskell
+source "${HOME}/.ghcup/env"
 
 # git-secrets (enable proper support)
 # export SECRETS_GPG_COMMAND=gpg2
@@ -64,7 +87,7 @@ export PATH=${PATH}:${GOBIN}
 # source ${HOME}/.kube/setup_env.sh
 
 # MySQL
-alias mysql=/usr/local/opt/mysql@5.7/bin/mysql
+export PATH=${PATH}:/usr/local/opt/mysql@5.7/bin
 
 # Prompt
 function get_pwd () {
