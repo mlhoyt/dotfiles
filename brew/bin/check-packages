@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -E -o errexit -o nounset -o pipefail
+trap "echo Error encountered -- exiting!" ERR
+
+_showAllWithDependencies=false
+if [[ "${1:-}" == "all" ]]; then
+  _showAllWithDependencies=true
+  echo "[INFO] All package dependencies will be analyzed"
+fi
+
+function checkPackage() {
+  local package=${1}
+  local indent=${2:-}
+
+  packageStat=$(brew info --json ${package})
+  if [[ $? != 0 ]]; then
+    echo "[ERROR] Non-zero return status for 'brew info --json ${package}'"
+    return
+  fi
+
+  outdated=$(echo -n ${packageStat} | jq '.[0].outdated')
+  current=$(echo -n ${packageStat} | jq '.[0].installed[0].version')
+  latest=$(echo -n ${packageStat} | jq '.[0].versions.stable')
+  if [[ "${_showAllWithDependencies}" == "true" ]]; then
+    echo "${indent}${package}: outOfDate: ${outdated} current=${current} latest=${latest}"
+
+    for depPackage in $(echo -n ${packageStat} | jq -r '.[0].dependencies[] | .'); do
+      if [[ ${#indent} -lt 8 ]]; then
+        checkPackage ${depPackage} "${indent}. "
+      else
+        echo "${indent}. ${depPackage} ..."
+      fi
+    done
+  elif [[ "${outdated}" == "true" ]]; then
+    echo "${indent}${package}: current=${current} latest=${latest}"
+  else
+    echo "${indent}${package}: ok"
+  fi
+}
+
+for package in $(brew list -1); do
+  checkPackage ${package}
+done
