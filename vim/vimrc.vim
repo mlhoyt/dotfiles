@@ -8,11 +8,12 @@ set t_vb=
 " https://hackernoon.com/the-last-statusline-for-vim-a613048959b2
 set laststatus=2
 set statusline=
-set statusline+=%f        " path
-set statusline+=%=        " switch to right side
-set statusline+=%1*%y%*\  " file type
-set statusline+=(%l,%c)\  " line and column
-set statusline+=%L        " total lines
+set statusline+=%f         " path
+set statusline+=%=         " switch to right side
+set statusline+=%1*%y%*\   " file type
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}]\ " encoding type
+set statusline+=(%l,%c)\   " line and column
+set statusline+=%L         " total lines
 
 " vim +PluginInstall +qall
 " vim +PluginUpdate +qall
@@ -127,6 +128,9 @@ set expandtab      " No tabs
 set tabstop=2      " The One True Tab
 set shiftwidth=2   " Number of spaces to shift for autoindent or >,<
 set softtabstop=2  " Spaces 'feel' like tabs
+set backspace=indent,eol,start
+
+autocmd FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " Code Folding
 set foldmethod=syntax
@@ -143,6 +147,7 @@ hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=b
 set dir=/tmp/
 set hlsearch
 set incsearch
+set ignorecase
 " Allow <tab> to jump to matching enclosure (paren, bracket, sqbracket, etc)
 map <tab> %
 
