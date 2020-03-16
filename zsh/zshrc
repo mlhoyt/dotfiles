@@ -77,6 +77,13 @@ export PATH=${PATH}:${GOBIN}
 # Glasgow Haskell
 source "${HOME}/.ghcup/env"
 
+# NodeJS (via nvm)
+export NVM_DIR="$HOME/.nvm"
+## Loads nvm
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+## Load nvm bash_completion
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+
 # git-secrets (enable proper support)
 # export SECRETS_GPG_COMMAND=gpg2
 
