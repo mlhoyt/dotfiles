@@ -147,7 +147,7 @@ hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=b
 set dir=/tmp/
 set hlsearch
 set incsearch
-set ignorecase
+" set ignorecase
 " Allow <tab> to jump to matching enclosure (paren, bracket, sqbracket, etc)
 map <tab> %
 
