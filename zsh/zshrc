@@ -96,6 +96,9 @@ export NVM_DIR="$HOME/.nvm"
 # MySQL
 export PATH=${PATH}:/usr/local/opt/mysql@5.7/bin
 
+# AWS
+export AWS_PAGER=""
+
 # Prompt
 function get_pwd () {
   if [[ ${PWD} = ${HOME} ]]; then
