@@ -102,9 +102,9 @@ let g:terraform_fmt_on_save=1
 
 " YouCompleteMe settings / key bindings
 " disable auto_triggering ycm suggestions pane and instead use semantic completion only on Ctrl+n
-let ycm_trigger_key = '<C-n>'
-let g:ycm_auto_trigger = 0
-let g:ycm_key_invoke_completion = ycm_trigger_key
+" let ycm_trigger_key = '<C-n>'
+" let g:ycm_auto_trigger = 0
+" let g:ycm_key_invoke_completion = ycm_trigger_key
 
 " Omni Completion (vim builtin??)
 " trigger = <C-x><C-o>
