@@ -1,3 +1,6 @@
 #!/usr/bin/env sh
 
 date -u +'%Y-%m-%dT%H:%M:%SZ'
+
+# From epoch
+# date -r <EPOCH> +'%Y-%m-%dT%H:%M:%SZ'
