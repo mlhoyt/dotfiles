@@ -40,5 +40,8 @@ function checkPackage() {
 }
 
 for package in $(brew list -1); do
-  checkPackage ${package}
+  result=$(checkPackage ${package})
+  if [[ ! "${result}" =~ ": ok" ]]; then
+    echo "${result}"
+  fi
 done
