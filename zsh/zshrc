@@ -60,9 +60,6 @@ alias dos2ux="tr -d '\r'"
 # GNU Make
 alias make=gmake
 
-# Perl
-export PERL5LIB="${HOME}/perl5/lib"
-
 # Python
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
