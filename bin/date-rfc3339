@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 
+# Current date in RFC3339
 date -u +'%Y-%m-%dT%H:%M:%SZ'
 
-# From epoch
+# From epoch in RFC3339
 # date -r <EPOCH> +'%Y-%m-%dT%H:%M:%SZ'
+
+# From RFC3339 to epoch (on macOS)
+# date -j -f "%Y-%m-%dT%H:%M:%S%z" "<DATE-RFC3339>" "+%s"
