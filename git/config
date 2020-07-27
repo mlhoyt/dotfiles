@@ -13,10 +13,12 @@
 
 [alias]
   logtree = log --graph --all --decorate --oneline --abbrev-commit
+  log10 = log --oneline -10
   stat = status
   branch-current = rev-parse --abbrev-ref HEAD
   files-changed = show --name-only --pretty=""
   version-describe = describe --tags --always --dirty
+  commit-for-ci = commit --allow-empty -m "trigger CI"
 
 [url "git@github.com:"]
   insteadOf = https://github.com/
