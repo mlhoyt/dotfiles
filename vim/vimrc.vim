@@ -72,6 +72,9 @@ map <leader>j :cnext<CR>
 map <leader>k :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 nnoremap <leader>i :GoInfo<CR>
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "gofmt"
+let g:go_fmt_options = '-s'
 " let g:go_auto_type_info = 1
 " autocmd FileType go nmap <leader>r <Plug>(go-run)
 " autocmd FileType go nmap <leader>b <Plug>(go-build)
