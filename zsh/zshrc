@@ -97,6 +97,8 @@ export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform.d/plugin-cache"
 
 # MySQL
 export PATH=${PATH}:/usr/local/opt/mysql@5.7/bin
+# https://stackoverflow.com/questions/41887460/select-list-is-not-in-group-by-clause-and-contains-nonaggregated-column-inc
+alias fix-only-full-group-by="mysql -u root -e \"SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));\""
 
 # AWS
 export AWS_PAGER=""
