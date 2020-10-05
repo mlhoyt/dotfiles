@@ -71,6 +71,10 @@ export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
 # export GO111MODULE=on ## Shouldn't be needed with golang=v1.13
 
+# Rust
+source "${HOME}/.cargo/env"
+export PATH=${PATH}:${HOME}/rust/src/github.com/racer-rust/racer/target/release
+
 # Glasgow Haskell
 source "${HOME}/.ghcup/env"
 
