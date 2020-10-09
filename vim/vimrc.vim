@@ -21,12 +21,15 @@ set statusline+=%L         " total lines
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-" File Browser
+" File Browser (.-t)
 Plugin 'scrooloose/nerdtree'
 " Git
 Plugin 'Xuyuanp/nerdtree-git-plugin'  " Git: status (for NERDTree)
 Plugin 'airblade/vim-gitgutter'       " Git: diff
+" Commenting (,-/)
 Plugin 'tpope/vim-commentary'
+" Tagbar (,-t)
+Plugin 'majutsushi/tagbar'
 " Golang
 Plugin 'fatih/vim-go'
 " Terraform
@@ -38,10 +41,10 @@ Plugin 'racer-rust/vim-racer'
 " Javascript
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+" CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'nsf/gocode', {'rtp': 'vim/'}
 " Plugin 'Valloric/YouCompleteMe'
-Plugin 'majutsushi/tagbar'
 call vundle#end()
 
 filetype plugin indent on
@@ -52,17 +55,22 @@ syntax on
 "   v: visual
 "   i: insert
 
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-
 let mapleader = "."
 
-" NERDTree settings / key bindings
-" Fix NERDTree ^G before file/folder names - https://stackoverflow.com/questions/53657545/nerdtree-g-before-folder-and-file-names-osx-terminal-vim
+"
+" File Browser (NERDTree)
+" NOTE: Fix NERDTree ^G before file/folder names - https://stackoverflow.com/questions/53657545/nerdtree-g-before-folder-and-file-names-osx-terminal-vim
+"
+
 let g:NERDTreeNodeDelimiter = "\u00a0"
+
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>w <C-w>
 
-" vim-gitgutter settings / key bindings
+"
+" Git
+"
+
 nnoremap <leader>dh :GitGutterLineHighlightsToggle<CR>
 
 let mapleader = ","
@@ -78,6 +86,8 @@ vnoremap <leader>/ :Commentary<CR>
 " Tagbar
 "
 
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+
 nnoremap <leader>t :TagbarToggle<CR>
 
 " Quick paste key bindings
@@ -92,7 +102,7 @@ nnoremap <leader>t :TagbarToggle<CR>
 " map <leader>j :cnext<CR>
 " map <leader>k :cprevious<CR>
 " nnoremap <leader>a :cclose<CR>
-"
+
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = "gofmt"
 let g:go_fmt_options = '-s'
