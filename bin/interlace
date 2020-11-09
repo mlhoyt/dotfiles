@@ -1,4 +1,66 @@
-#!/usr/bin/env perl
+#!/usr/bin/env python3
 
-print STDERR ( "Fatal: Need to implement this 'interlace' utility!\n" );
+import sys
+import re
 
+def parse_args():
+  if len(sys.argv) != 3:
+    print("USAGE: %s <UPPER-COUNT> <LOWER-COUNT>" % (sys.argv[0]), file=sys.stderr)
+    sys.exit(1)
+  
+  try:
+    opt_upper_count = int(sys.argv[1])
+  except:
+    print("<UPPER-COUNT> argument \"%s\" is not a number" % (sys.argv[1]), file=sys.stderr)
+    sys.exit(1)
+  
+  if opt_upper_count < 1:
+    print("<UPPER-COUNT> argument must be >= 1", file=sys.stderr)
+    sys.exit(1)
+  
+  try:
+    opt_lower_count = int(sys.argv[2])
+  except:
+    print("<LOWER-COUNT> argument \"%s\" is not a number" % (sys.argv[2]), file=sys.stderr)
+    sys.exit(1)
+  
+  if opt_lower_count < 1:
+    print("<LOWER-COUNT> argument must be >= 1", file=sys.stderr)
+    sys.exit(1)
+
+  return opt_upper_count, opt_lower_count
+
+def load_input():
+  upper = []
+  lower = []
+  tgt = upper
+  reDivider = re.compile("^\-{3,}$")
+
+  for line in sys.stdin:
+    if reDivider.match(line):
+      tgt = lower
+    else:
+      tgt.append(line)
+
+  return upper, lower
+
+def output(upper, upper_count, lower, lower_count):
+  while len(upper) >= upper_count and len(lower) >= lower_count:
+    for i in range(0, upper_count):
+      print(upper.pop(0), end='')
+    for i in range(0, lower_count):
+      print(lower.pop(0), end='')
+
+  # # remainders
+  # for v in upper:
+  #   print(v, end='')
+  # for v in lower:
+  #   print(v, end='')
+
+def main():
+  opt_upper_count, opt_lower_count = parse_args()
+  upper, lower = load_input()
+  output(upper, opt_upper_count, lower, opt_lower_count)
+
+if __name__ == "__main__":
+  main()
