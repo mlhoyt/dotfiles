@@ -40,6 +40,11 @@ alias grep="grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.terraform}
 # ${HOME}/bin
 export PATH=${PATH}:${HOME}/bin
 
+# ${HOME}/.local/bin
+if test -d ${HOME}/.local/bin; then
+  export PATH=${PATH}:${HOME}/.local/bin
+fi
+
 # notebook
 alias notebook="cd ~/go/src/github.com/mlhoyt/notebook"
 
