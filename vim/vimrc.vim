@@ -30,6 +30,8 @@ Plugin 'airblade/vim-gitgutter'       " Git: diff
 Plugin 'tpope/vim-commentary'
 " Tagbar (,-t)
 Plugin 'majutsushi/tagbar'
+" ALE
+Plugin 'dense-analysis/ale'
 " Golang
 Plugin 'fatih/vim-go'
 " Terraform
@@ -92,6 +94,14 @@ nnoremap <leader>t :TagbarToggle<CR>
 
 " Quick paste key bindings
 " map <leader>p :r! pbpaste<CR>
+
+"
+" ALE
+"
+
+let g:ale_linters = {
+  \ 'rust': ['analyzer'],
+\ }
 
 "
 " Golang
@@ -164,18 +174,29 @@ augroup END
 " Rust
 "
 
+" rust-analyzer installation:
+" - mkdir -p ~/.local/bin
+" - curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-mac -o ~/.local/bin/rust-analyzer
+" - chmod +x ~/.local/bin/rust-analyzer
+" - Update VIM RC for ALE: let g:ale_linters = { 'rust': ['analyzer'], }
+
 let g:rustfmt_autosave = 1
 
 augroup filetype_rust
   autocmd!
-  autocmd FileType rust setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-  " autocmd FileType rust nnoremap <buffer> gd <Plug>(rust-def)
-  autocmd FileType rust nnoremap <buffer> gd :call racer#GoToDefinition()<CR>
-  " autocmd FileType rust nnoremap <buffer> gi <Plug>(rust-doc)
-  autocmd FileType rust nnoremap <buffer> gi :call racer#ShowDocumentation(0)<CR>
+  autocmd FileType rust setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  " " autocmd FileType rust nnoremap <buffer> gd <Plug>(rust-def)
+  " autocmd FileType rust nnoremap <buffer> gd :call racer#GoToDefinition()<CR>
+  " " autocmd FileType rust nnoremap <buffer> gi <Plug>(rust-doc)
+  " autocmd FileType rust nnoremap <buffer> gi :call racer#ShowDocumentation(0)<CR>
+  autocmd FileType rust nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType rust nnoremap <buffer> gr :ALEFindReferences<CR>
+  autocmd FileType rust nnoremap <buffer> gi :ALEHover<CR>
 augroup END
 
+"
 " Python
+"
 
 augroup filetype_python
   autocmd!
@@ -193,20 +214,28 @@ augroup END
 
 let mapleader = "\\"
 
-" Indentation: spaces-only (http://vim.wikia.com/wiki/Indenting_source_code)
+"
+" Indentation
+" NOTE: Syntax-specific settings should be in appropriate augroups for the FileType
+" NOTE: spaces-only (http://vim.wikia.com/wiki/Indenting_source_code)
+"
+
 " set autoindent
-" expandtab - No tabs
-" tabstop=<N> - The One True Tab
-" shiftwidth=<N> - Number of spaces to shift for autoindent or >,<
-" softtabstop=<N> - Spaces 'feel' like tabs
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set backspace=indent,eol,start
 
+"
 " Code Folding
+"
+
 set foldmethod=syntax
 set foldnestmax=1
 set foldlevelstart=10
 
+"
 " General Vim settings
+"
+
 set number
 set ruler
 " set ff=unix
@@ -217,20 +246,19 @@ set dir=/tmp/
 set hlsearch
 set incsearch
 " set ignorecase
-" Allow <tab> to jump to matching enclosure (paren, bracket, sqbracket, etc)
-nnoremap <tab> %
-
-" Enables automatic file write on specific commands
-set autowrite
+nnoremap <tab> % " Allow <tab> to jump to matching enclosure
+set autowrite " Enables automatic file write on specific commands
 
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+"
 " Whitespace character visibility
-" ref: https://www.barcodefaq.com/knowledge-base/mac-extended-ascii-character-chart/
+" REF: https://www.barcodefaq.com/knowledge-base/mac-extended-ascii-character-chart/
 " 200 = » = <opt>+<shft>+\
 " 224 = ‡ = <opt>+<shft>+7
+"
+
 set listchars=tab:»\ ,extends:›,precedes:‹,space:·,trail:~,eol:=
-" set listchars=tab:»\ ,space:\ ,trail:~,eol:\ 
 set nolist
