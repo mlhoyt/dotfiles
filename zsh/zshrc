@@ -65,6 +65,11 @@ alias dos2ux="tr -d '\r'"
 # GNU Make
 alias make=gmake
 
+# Rust
+if test -f "${HOME}/.cargo/env"; then
+  source "${HOME}/.cargo/env"
+fi
+
 # Python
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
@@ -81,7 +86,9 @@ source "${HOME}/.cargo/env"
 export PATH=${PATH}:${HOME}/rust/src/github.com/racer-rust/racer/target/release
 
 # Glasgow Haskell
-source "${HOME}/.ghcup/env"
+if test -f "${HOME}/.ghcup/env"; then
+  source "${HOME}/.ghcup/env"
+fi
 
 # NodeJS (via nvm)
 export NVM_DIR="$HOME/.nvm"
