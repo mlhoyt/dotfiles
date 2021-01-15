@@ -60,6 +60,11 @@ alias dos2ux="tr -d '\r'"
 # GNU Make
 alias make=gmake
 
+# Rust
+if test -f "${HOME}/.cargo/env"; then
+  source "${HOME}/.cargo/env"
+fi
+
 # Python
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
@@ -72,7 +77,9 @@ export PATH=${PATH}:${GOBIN}
 # export GO111MODULE=on ## Shouldn't be needed with golang=v1.13
 
 # Glasgow Haskell
-source "${HOME}/.ghcup/env"
+if test -f "${HOME}/.ghcup/env"; then
+  source "${HOME}/.ghcup/env"
+fi
 
 # NodeJS (via nvm)
 export NVM_DIR="$HOME/.nvm"
