@@ -1,4 +1,1 @@
-#!/usr/bin/env perl
-
-print STDERR ( "Fatal: Need to implement this 'reverse' utility!\n" );
-
+reverse.lua
