@@ -40,7 +40,9 @@ Plugin 'juliosueiras/vim-terraform-completion'
 " Rust
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
-" Javascript
+" Python
+Plugin 'psf/black'
+" JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 " CtrlP
@@ -51,6 +53,14 @@ call vundle#end()
 
 filetype plugin indent on
 syntax on
+
+"
+" Defaults
+"
+
+" set autoindent
+set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+set backspace=indent,eol,start
 
 " Map modes:
 "   n: normal
@@ -97,11 +107,20 @@ nnoremap <leader>t :TagbarToggle<CR>
 
 "
 " ALE
-"
+" - refs
+"   - https://www.vimfromscratch.com/articles/vim-and-language-server-protocol/
+" - debugging notes
+"   - use `:ALEInfo`
+"   - use `:echo g:ale_buffer_info`
+"   - use vimrc `let g:ale_command_wrapper = '~/.local/bin/ale-command-wrapper.sh'`
+"       - This allows you to debug interactions with language servers
 
-let g:ale_linters = {
-  \ 'rust': ['analyzer'],
-\ }
+let g:ale_linters = {}
+let g:ale_fixers = {}
+let g:ale_fix_on_save = 1
+let g:ale_set_balloons=1  " Hover information is displayed in a hovering window (does NOT seem to work)
+let g:ale_completion_enabled=1
+set omnifunc=ale#completion#OmniFunc
 
 "
 " Golang
@@ -165,9 +184,17 @@ let g:terraform_fmt_on_save=1
 let g:terraform_fold_sections=1
 let g:terraform_remap_spacebar=1
 
+" let g:ale_linters['terraform'] = ['terraform_ls', 'terraform']
+" let g:ale_linters['terraform'] = ['terraform_ls']
+" let g:ale_terraform_ls_executable = 'terraform-ls'
+" let g:ale_terraform_ls_options = 'serve'
+
 augroup filetype_terraform
   autocmd!
   autocmd FileType terraform setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType terraform nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType terraform nnoremap <buffer> gr :ALEFindReferences<CR>
+  autocmd FileType terraform nnoremap <buffer> gi :ALEHover<CR>
 augroup END
 
 "
@@ -180,6 +207,7 @@ augroup END
 " - chmod +x ~/.local/bin/rust-analyzer
 " - Update VIM RC for ALE: let g:ale_linters = { 'rust': ['analyzer'], }
 
+let g:ale_linters['rust'] = ['analyzer']
 let g:rustfmt_autosave = 1
 
 augroup filetype_rust
@@ -198,9 +226,31 @@ augroup END
 " Python
 "
 
+" https://black.readthedocs.io/en/stable/editor_integration.html#vim
+let g:black_linelength = 256
+
 augroup filetype_python
   autocmd!
-  autocmd FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+augroup END
+
+autocmd BufWritePost *.py silent! execute ':Black'
+
+"
+" JavaScript
+" - requires: npm install -g typescript
+"   - This installs 'tsserver' which acts as the ALE language server to provide
+"     code navigation
+"
+
+let g:ale_fixers['javascript'] = ['eslint']
+
+augroup filetype_javascript_jsx
+  autocmd!
+  autocmd FileType javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType javascript.jsx nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType javascript.jsx nnoremap <buffer> gr :ALEFindReferences<CR>
+  autocmd FileType javascript.jsx nnoremap <buffer> gi :ALEHover<CR>
 augroup END
 
 " YouCompleteMe settings / key bindings
@@ -219,10 +269,6 @@ let mapleader = "\\"
 " NOTE: Syntax-specific settings should be in appropriate augroups for the FileType
 " NOTE: spaces-only (http://vim.wikia.com/wiki/Indenting_source_code)
 "
-
-" set autoindent
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-set backspace=indent,eol,start
 
 "
 " Code Folding
