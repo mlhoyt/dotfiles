@@ -20,9 +20,6 @@
   version-describe = describe --tags --always --dirty
   commit-for-ci = commit --allow-empty -m "trigger CI"
 
-[url "git@github.com:"]
-  insteadOf = https://github.com/
-
 # Use separate file for username, API token, etc
 [include]
   path = ~/.gitcredentials
