@@ -7,7 +7,7 @@ _outfile=${1:-${HOME}/dotfiles/brew/packages.list}
 
 echo -n "" \
   > ${_outfile}
-brew list --versions \
+brew list --formulae --versions \
   >> ${_outfile}
-brew cask list --versions \
+brew list --casks --versions \
   >> ${_outfile}
