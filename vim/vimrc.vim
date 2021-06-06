@@ -40,8 +40,9 @@ Plugin 'juliosueiras/vim-terraform-completion'
 " Rust
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
+" Lua
 " Python
-Plugin 'psf/black'
+" Plugin 'psf/black'
 " JavaScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -223,18 +224,22 @@ augroup filetype_rust
 augroup END
 
 "
+" Lua
+"
+
+"
 " Python
 "
 
 " https://black.readthedocs.io/en/stable/editor_integration.html#vim
-let g:black_linelength = 256
+" let g:black_linelength = 256
 
 augroup filetype_python
   autocmd!
   autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 augroup END
 
-autocmd BufWritePost *.py silent! execute ':Black'
+" autocmd BufWritePost *.py silent! execute ':Black'
 
 "
 " JavaScript
@@ -247,7 +252,7 @@ let g:ale_fixers['javascript'] = ['eslint']
 
 augroup filetype_javascript_jsx
   autocmd!
-  autocmd FileType javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType javascript.jsx setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType javascript.jsx nnoremap <buffer> gd :ALEGoToDefinition<CR>
   autocmd FileType javascript.jsx nnoremap <buffer> gr :ALEFindReferences<CR>
   autocmd FileType javascript.jsx nnoremap <buffer> gi :ALEHover<CR>
