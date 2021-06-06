@@ -19,6 +19,7 @@
   files-changed = show --name-only --pretty=""
   version-describe = describe --tags --always --dirty
   commit-for-ci = commit --allow-empty -m "trigger CI"
+  diffb = diff --ignore-space-change
 
 # Use separate file for username, API token, etc
 [include]
@@ -28,4 +29,4 @@
   protocol = ssh
 
 [commit]
-	gpgsign = true
+  gpgsign = true
