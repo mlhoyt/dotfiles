@@ -39,17 +39,20 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'juliosueiras/vim-terraform-completion'
 " Rust
 Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
+" Plugin 'racer-rust/vim-racer'
 " Lua
 " Python
 " Plugin 'psf/black'
 " JavaScript
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+" Another option?: "yuezk/vim-js"
+" TypeScript
+Plugin 'leafgarland/typescript-vim'
+" JSX/TSX
+" Deprecated: Plugin 'mxw/vim-jsx'
+Plugin 'MaxMEllon/vim-jsx-pretty'
 " CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'nsf/gocode', {'rtp': 'vim/'}
-" Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 
 filetype plugin indent on
@@ -119,12 +122,15 @@ nnoremap <leader>t :TagbarToggle<CR>
 let g:ale_linters = {}
 let g:ale_fixers = {}
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 1
 let g:ale_set_balloons=1  " Hover information is displayed in a hovering window (does NOT seem to work)
 let g:ale_completion_enabled=1
 set omnifunc=ale#completion#OmniFunc
 
 "
 " Golang
+" - updates:
+"   - brew upgrade go
 "
 
 " map <C-j> :cnext<CR>
@@ -200,15 +206,18 @@ augroup END
 
 "
 " Rust
-"
-
-" rust-analyzer installation:
-" - mkdir -p ~/.local/bin
-" - curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-mac -o ~/.local/bin/rust-analyzer
-" - chmod +x ~/.local/bin/rust-analyzer
-" - Update VIM RC for ALE: let g:ale_linters = { 'rust': ['analyzer'], }
+" - updates:
+"   - rustup
+"     - rustup check
+"     - rustup update
+"   - rust-analyzer
+"     - mkdir -p ~/.local/bin
+"     - curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-aarch64-apple-darwin.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+"     - chmod +x ~/.local/bin/rust-analyzer
+"     - ~/.local/bin/rust-analyzer --version
 
 let g:ale_linters['rust'] = ['analyzer']
+let g:ale_fixers['rust'] = ['rustfmt']
 let g:rustfmt_autosave = 1
 
 augroup filetype_rust
@@ -225,6 +234,8 @@ augroup END
 
 "
 " Lua
+" - updates:
+"   - brew upgrade lua
 "
 
 "
@@ -258,11 +269,22 @@ augroup filetype_javascript_jsx
   autocmd FileType javascript.jsx nnoremap <buffer> gi :ALEHover<CR>
 augroup END
 
-" YouCompleteMe settings / key bindings
-" disable auto_triggering ycm suggestions pane and instead use semantic completion only on Ctrl+n
-" let ycm_trigger_key = '<C-n>'
-" let g:ycm_auto_trigger = 0
-" let g:ycm_key_invoke_completion = ycm_trigger_key
+"
+" TypeScript
+" - requires: npm install -g typescript
+"   - This installs 'tsserver' which acts as the ALE language server to provide
+"     code navigation
+"
+
+let g:ale_fixers['typescript'] = ['eslint']
+
+augroup filetype_typescript
+  autocmd!
+  autocmd FileType typescript setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType typescript nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType typescript nnoremap <buffer> gr :ALEFindReferences<CR>
+  autocmd FileType typescript nnoremap <buffer> gi :ALEHover<CR>
+augroup END
 
 " Omni Completion (vim builtin??)
 " trigger = <C-x><C-o>
@@ -299,6 +321,9 @@ set incsearch
 " set ignorecase
 nnoremap <tab> % " Allow <tab> to jump to matching enclosure
 set autowrite " Enables automatic file write on specific commands
+" Reference: https://thoughtbot.com/blog/wrap-existing-text-at-80-characters-in-vim
+" Use 'v' to highlight and ':gq' to format selected lines
+set textwidth=100
 
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
