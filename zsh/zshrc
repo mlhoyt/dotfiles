@@ -9,6 +9,7 @@ export DISABLE_AUTO_UPDATE=true
 # NOTE: Too many plugins slow down shell startup.
 plugins=(
   aws
+  cargo
   docker
   git
   golang
@@ -69,18 +70,28 @@ alias dos2ux="tr -d '\r'"
 # GNU Make
 alias make=gmake
 
+# Homebrew
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}";
+export MANPATH="/opt/homebrew/share/man:${MANPATH}";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+# GPG
+export MANPATH="/usr/local/MacGPG2/share/man:${MANPATH}";
+
 # Rust
 if test -f "${HOME}/.cargo/env"; then
   source "${HOME}/.cargo/env"
 fi
 
-export PATH=${PATH}:${HOME}/rust/src/github.com/racer-rust/racer/target/release
+# export PATH=${PATH}:${HOME}/rust/src/github.com/racer-rust/racer/target/release
 
 # Golang (brew install golang)
-export GOPATH=${HOME}/go
+export GOPATH=${HOME}/src
 export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
-# export GO111MODULE=on ## Shouldn't be needed with golang=v1.13
 
 # Lua
 
@@ -92,12 +103,9 @@ fi
 # NodeJS (via nvm)
 export NVM_DIR="$HOME/.nvm"
 ## Loads nvm
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+[ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh"
 ## Load nvm bash_completion
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-
-# git-secrets (enable proper support)
-# export SECRETS_GPG_COMMAND=gpg2
+[ -s "${NVM_DIR}/bash_completion" ] && . "${NVM_DIR}/bash_completion"
 
 # hub
 # alias git=hub
