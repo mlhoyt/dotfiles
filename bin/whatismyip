@@ -1,1 +1,2 @@
 curl -L ipecho.io/plain; echo
+# curl -L https://ipinfo.io/json
