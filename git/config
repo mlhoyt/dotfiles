@@ -1,14 +1,17 @@
 [color]
   ui = auto
 
-[push]
-  default = simple
-
 [fetch]
   prune = true
 
+[pull]
+  rebase = false
+
+[push]
+  default = simple
+
 [core]
-  editor = /usr/local/bin/vim
+  editor = /opt/homebrew/bin/vim
   pager = less -F -X
 
 [alias]
