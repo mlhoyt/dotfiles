@@ -130,9 +130,6 @@ let g:ale_set_balloons=1  " Hover information is displayed in a hovering window 
 let g:ale_completion_enabled=1
 set omnifunc=ale#completion#OmniFunc
 
-" this is temporary to allow debuging interactions with language servers
-" let g:ale_command_wrapper = '~/.local/bin/ale-command-wrapper.sh'
-
 "
 " Golang
 " - updates:
@@ -197,10 +194,8 @@ let g:terraform_fmt_on_save=1
 let g:terraform_fold_sections=1
 let g:terraform_remap_spacebar=1
 
-" let g:ale_linters['terraform'] = ['terraform_ls', 'terraform']
-" let g:ale_linters['terraform'] = ['terraform_ls']
-" let g:ale_terraform_ls_executable = 'terraform-ls'
-" let g:ale_terraform_ls_options = 'serve'
+let g:ale_linters['terraform'] = ['terraform', 'terraform_ls']
+let g:ale_fixers['terraform'] = ['terraform']
 
 augroup filetype_terraform
   autocmd!
