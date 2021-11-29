@@ -1,6 +1,8 @@
 set nocompatible  " Use Vim defaults instead of 100% vi compatibility Vundle:required
 filetype off      " Vundle:required
 
+set shell=/bin/bash
+
 " disable audible bell
 set visualbell
 set t_vb=
@@ -116,8 +118,9 @@ nnoremap <leader>t :TagbarToggle<CR>
 " - debugging notes
 "   - use `:ALEInfo`
 "   - use `:echo g:ale_buffer_info`
-"   - use vimrc `let g:ale_command_wrapper = '~/.local/bin/ale-command-wrapper.sh'`
-"       - This allows you to debug interactions with language servers
+"   - https://github.com/dense-analysis/ale/issues/2137
+"     - use vimrc `let g:ale_command_wrapper = '~/.local/bin/ale-command-wrapper.sh'`
+"         - This allows you to debug interactions with language servers
 
 let g:ale_linters = {}
 let g:ale_fixers = {}
@@ -126,6 +129,9 @@ let g:ale_lint_on_save = 1
 let g:ale_set_balloons=1  " Hover information is displayed in a hovering window (does NOT seem to work)
 let g:ale_completion_enabled=1
 set omnifunc=ale#completion#OmniFunc
+
+" this is temporary to allow debuging interactions with language servers
+" let g:ale_command_wrapper = '~/.local/bin/ale-command-wrapper.sh'
 
 "
 " Golang
@@ -217,6 +223,10 @@ augroup END
 "     - ~/.local/bin/rust-analyzer --version
 
 let g:ale_linters['rust'] = ['analyzer']
+" let g:ale_rust_analyzer_config = {
+"   \ 'rust-analyzer.diagnostics.enable': v:true,
+"   \ 'rust-analyzer.trace.server': 'verbose'
+"   \ }
 let g:ale_fixers['rust'] = ['rustfmt']
 let g:rustfmt_autosave = 1
 
