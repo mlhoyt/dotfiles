@@ -222,7 +222,7 @@ augroup END
 "     - chmod +x ~/.local/bin/rust-analyzer
 "     - ~/.local/bin/rust-analyzer --version
 
-let g:ale_linters['rust'] = ['analyzer']
+let g:ale_linters['rust'] = ['analyzer', 'cargo']
 " let g:ale_rust_analyzer_config = {
 "   \ 'rust-analyzer.diagnostics.enable': v:true,
 "   \ 'rust-analyzer.trace.server': 'verbose'
