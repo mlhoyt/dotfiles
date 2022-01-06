@@ -9,7 +9,7 @@ export DISABLE_AUTO_UPDATE=true
 # NOTE: Too many plugins slow down shell startup.
 plugins=(
   aws
-  cargo
+  rust
   docker
   git
   golang
