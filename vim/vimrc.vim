@@ -53,6 +53,8 @@ Plugin 'leafgarland/typescript-vim'
 " JSX/TSX
 " Deprecated: Plugin 'mxw/vim-jsx'
 Plugin 'MaxMEllon/vim-jsx-pretty'
+" GraphQL
+Plugin 'jparise/vim-graphql'
 " CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
 call vundle#end()
