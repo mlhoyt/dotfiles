@@ -1,2 +1,5 @@
-curl -L ipecho.io/plain; echo
+#!/usr/bin/env sh
+
+# curl -L ipecho.io/plain; echo
 # curl -L https://ipinfo.io/json
+curl https://ipinfo.io/json
