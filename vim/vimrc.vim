@@ -53,6 +53,7 @@ Plugin 'leafgarland/typescript-vim'
 " JSX/TSX
 " Deprecated: Plugin 'mxw/vim-jsx'
 Plugin 'MaxMEllon/vim-jsx-pretty'
+" Plugin 'peitalin/vim-jsx-typescript'
 " GraphQL
 Plugin 'jparise/vim-graphql'
 " CtrlP
@@ -266,6 +267,7 @@ augroup END
 "     code navigation
 "
 
+let g:ale_linters['javascript'] = ['eslint']
 let g:ale_fixers['javascript'] = ['eslint']
 
 augroup filetype_javascript_jsx
@@ -278,19 +280,31 @@ augroup END
 
 "
 " TypeScript
-" - requires: npm install -g typescript
+" - requires: npm install [-g] typescript
 "   - This installs 'tsserver' which acts as the ALE language server to provide
 "     code navigation
 "
 
+let g:ale_linters['typescript'] = ['eslint', 'tsserver']
 let g:ale_fixers['typescript'] = ['eslint']
 
 augroup filetype_typescript
   autocmd!
-  autocmd FileType typescript setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType typescript nnoremap <buffer> gd :ALEGoToDefinition<CR>
   autocmd FileType typescript nnoremap <buffer> gr :ALEFindReferences<CR>
   autocmd FileType typescript nnoremap <buffer> gi :ALEHover<CR>
+augroup END
+
+let g:ale_linters['typescriptreact'] = ['eslint', 'tsserver']
+let g:ale_fixers['typescriptreact'] = ['eslint']
+
+augroup filetype_typescriptreact
+  autocmd!
+  autocmd FileType typescriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType typescriptreact nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType typescriptreact nnoremap <buffer> gr :ALEFindReferences<CR>
+  autocmd FileType typescriptreact nnoremap <buffer> gi :ALEHover<CR>
 augroup END
 
 " Omni Completion (vim builtin??)
