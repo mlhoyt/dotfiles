@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Another option:
-# openssl rand -base64 $ARG1 | colrm $(expr $ARG1 + 1)) | tr -d '\n' | pbcopy;
+# openssl rand -base64 $ARG1 | colrm $(expr $ARG1 + 1) | tr -d '\n' | pbcopy;
 
 # OPTIONS: [(LENGTH:-32) [(COUNT:-1)]]
 export LC_CTYPE=C
