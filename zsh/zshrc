@@ -68,7 +68,7 @@ function set-title {
 alias dos2ux="tr -d '\r'"
 
 # GNU Make
-alias make=gmake
+# alias make=gmake
 
 # Homebrew
 export HOMEBREW_PREFIX="/opt/homebrew";
