@@ -307,6 +307,13 @@ augroup filetype_typescriptreact
   autocmd FileType typescriptreact nnoremap <buffer> gi :ALEHover<CR>
 augroup END
 
+"
+" GraphQL
+"
+
+let g:ale_linters['graphql'] = ['eslint']
+let g:ale_fixers['graphql'] = ['prettier']
+
 " Omni Completion (vim builtin??)
 " trigger = <C-x><C-o>
 
