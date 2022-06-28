@@ -84,6 +84,7 @@ let mapleader = "."
 "
 
 let g:NERDTreeNodeDelimiter = "\u00a0"
+let g:NERDTreeShowHidden = 1
 
 nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>w <C-w>
