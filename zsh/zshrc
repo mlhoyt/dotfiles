@@ -94,6 +94,7 @@ export GOBIN=${GOPATH}/bin
 export PATH=${PATH}:${GOBIN}
 
 # Lua
+export LUA_PATH=/opt/homebrew/share/lua/5.4/luarocks/?.lua
 
 # Python
 if command -v pyenv 1>/dev/null 2>&1; then
