@@ -118,6 +118,7 @@ nnoremap <leader>t :TagbarToggle<CR>
 "
 " ALE
 " - refs
+"   - https://github.com/dense-analysis/ale/blob/master/doc/ale.txt
 "   - https://www.vimfromscratch.com/articles/vim-and-language-server-protocol/
 " - debugging notes
 "   - use `:ALEInfo`
@@ -130,7 +131,12 @@ let g:ale_linters = {}
 let g:ale_fixers = {}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_save = 1
-let g:ale_set_balloons=1  " Hover information is displayed in a hovering window (does NOT seem to work)
+" Hover information is displayed in a hovering window.
+" Requires Vim supports the |balloon_show()| function.
+" Does NOT seem to work implying the install Vim does not support the above function.
+" let g:ale_set_balloons=1
+" let g:ale_hover_to_preview=1
+let g:ale_hover_to_floating_preview=1
 let g:ale_completion_enabled=1
 set omnifunc=ale#completion#OmniFunc
 
@@ -319,6 +325,13 @@ let g:ale_fixers['graphql'] = ['prettier']
 " trigger = <C-x><C-o>
 
 let mapleader = "\\"
+
+"
+" SQL
+"
+
+let g:ale_linters['sql'] = ['pgformatter']
+let g:ale_fixers['sql'] = ['prettier']
 
 "
 " Indentation
