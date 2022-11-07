@@ -135,7 +135,7 @@ function get_pwd () {
     echo "$(basename ${PWD})"
   fi
 }
-export PROMPT='%{$fg[black]$bg[white]%}${USER}@%m%{$reset_color%} %{$fg[black]$bg[yellow]%}$(get_pwd)%{$reset_color%} $(git_prompt_info)⤏ '
+export PROMPT='%{$fg[black]$bg[white]%}${USER}@%m%{$reset_color%} %{$fg[black]$bg[yellow]%}$(get_pwd)%{$reset_color%} $(git_prompt_info)'$'\n''$ '
 
 ######################################################################
 # Local configuration
