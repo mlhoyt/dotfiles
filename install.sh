@@ -4,8 +4,10 @@
 set -E -o errexit -o nounset -o pipefail
 trap "echo Error encountered -- exiting!" ERR
 
-## install XCode (xcode-select --install)
+## install XCode Command Line Tools
+# xcode-select --install
 
+## install personal dotfiles
 # git clone https://github.com/<GITHUB-USERNAME>/dotfiles.git ${HOME}/dotfiles
 
 DOTFILES_ROOT=$( cd "$(dirname "$0")" ; pwd -P )
@@ -50,13 +52,17 @@ curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 
 ## Update ~/.editrc
 ## man editrc
-## For software that uses 'editline'
+## This is the configuration for 'editline' library.
+## macOS uses libedit readline instead of GNU readline.
+## - Reference: https://stackoverflow.com/questions/70770189/how-to-substitute-libedit-readline-with-gnu-readline-on-mac-os
 cat > ~/.editrc <<EOHI
 bind -v
 EOHI
 
 # ## Update ~/.inputrc
-# ## Possibly bash specific
+# ## This is the configuration for GNU readline.
+# ## Given macOS uses libedit readline this should not be necessary or have any effect.
+# ## - Reference: https://unix.stackexchange.com/questions/424471/whats-the-difference-between-bashrc-and-inputrc
 # cat > ~/.inputrc <<EOHI
 # set editing-mode vi
 # set keymap vi
