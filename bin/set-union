@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+# Reference: https://stackoverflow.com/questions/2509533/bash-linux-set-difference-between-two-text-files
+
+sort ${1:-} ${2:-} | uniq

@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+# Reference: https://stackoverflow.com/questions/2509533/bash-linux-set-difference-between-two-text-files
+
+file1=$(mktemp /tmp/set-difference.XXXXXX)
+sort ${1:-} > ${file1}
+
+file2=$(mktemp /tmp/set-difference.XXXXXX)
+sort ${2:-} > ${file2}
+
+comm -1 -2 ${file1} ${file2}
+
+rm -f ${file1} ${file2}
