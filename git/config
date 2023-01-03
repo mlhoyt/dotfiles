@@ -1,6 +1,10 @@
 [color]
   ui = auto
 
+[color "diff"]
+  old = red reverse
+  new = green reverse
+
 [fetch]
   prune = true
 
@@ -9,6 +13,9 @@
 
 [push]
   default = simple
+
+[diff]
+  colormoved = zebra
 
 [core]
   editor = /opt/homebrew/bin/vim
