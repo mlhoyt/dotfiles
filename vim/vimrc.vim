@@ -108,7 +108,7 @@ vnoremap <leader>/ :Commentary<CR>
 " Tagbar
 "
 
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 
 nnoremap <leader>t :TagbarToggle<CR>
 
