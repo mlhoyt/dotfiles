@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+awk '{s+=$1} END {print s}' -
