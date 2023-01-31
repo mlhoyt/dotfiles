@@ -139,6 +139,7 @@ let g:ale_lint_on_save = 1
 let g:ale_hover_to_floating_preview=1
 let g:ale_completion_enabled=1
 set omnifunc=ale#completion#OmniFunc
+let g:ale_virtualtext_cursor='current'
 
 "
 " Golang
