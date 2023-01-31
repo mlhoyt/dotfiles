@@ -236,6 +236,10 @@ let g:ale_linters['rust'] = ['analyzer', 'cargo']
 let g:ale_fixers['rust'] = ['rustfmt']
 let g:rustfmt_autosave = 1
 
+" For formatting inside macros for other languages (e.g. HTML):
+" Reference: https://github.com/yewstack/yew/issues/1446
+" noremap <leader>f :'<,'>! prettier --parser html --stdin-filepath<cr>
+
 augroup filetype_rust
   autocmd!
   autocmd FileType rust setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
