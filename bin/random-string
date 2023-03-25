@@ -4,5 +4,8 @@
 # openssl rand -base64 $ARG1 | colrm $(expr $ARG1 + 1) | tr -d '\n' | pbcopy;
 
 # OPTIONS: [(LENGTH:-32) [(COUNT:-1)]]
-export LC_CTYPE=C
-cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n ${2:-1}
+# export LC_CTYPE=C
+# cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n ${2:-1}
+
+# OPTIONS: [(LENGTH:-32) [(COUNT:-1)]]
+openssl rand -base64 1024 | tr -dc 'a-zA-Z0-9' | fold -w ${1:-32} | head -n ${2:-1}
