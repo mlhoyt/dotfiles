@@ -24,9 +24,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " File Browser (.-t)
-Plugin 'scrooloose/nerdtree'
 " Git
-Plugin 'Xuyuanp/nerdtree-git-plugin'  " Git: status (for NERDTree)
 Plugin 'airblade/vim-gitgutter'       " Git: diff
 " Commenting (,-/)
 Plugin 'tpope/vim-commentary'
@@ -71,6 +69,9 @@ syntax on
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set backspace=indent,eol,start
 
+" Reference: https://vi.stackexchange.com/questions/16795/how-could-i-create-a-terminal-at-the-bottom
+set splitbelow
+
 " Map modes:
 "   n: normal
 "   v: visual
@@ -79,14 +80,8 @@ set backspace=indent,eol,start
 let mapleader = "."
 
 "
-" File Browser (NERDTree)
-" NOTE: Fix NERDTree ^G before file/folder names - https://stackoverflow.com/questions/53657545/nerdtree-g-before-folder-and-file-names-osx-terminal-vim
+" Pane navigation
 "
-
-let g:NERDTreeNodeDelimiter = "\u00a0"
-let g:NERDTreeShowHidden = 1
-
-nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>w <C-w>
 
 "
@@ -371,10 +366,6 @@ set autowrite " Enables automatic file write on specific commands
 " Reference: https://thoughtbot.com/blog/wrap-existing-text-at-80-characters-in-vim
 " Use 'v' to highlight and ':gq' to format selected lines
 set textwidth=100
-
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "
 " Whitespace character visibility
