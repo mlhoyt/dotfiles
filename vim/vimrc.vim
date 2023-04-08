@@ -293,7 +293,7 @@ augroup END
 "
 
 let g:ale_linters['typescript'] = ['eslint', 'tsserver']
-let g:ale_fixers['typescript'] = ['eslint']
+let g:ale_fixers['typescript'] = ['prettier']
 
 augroup filetype_typescript
   autocmd!
@@ -304,7 +304,7 @@ augroup filetype_typescript
 augroup END
 
 let g:ale_linters['typescriptreact'] = ['eslint', 'tsserver']
-let g:ale_fixers['typescriptreact'] = ['eslint']
+let g:ale_fixers['typescriptreact'] = ['prettier']
 
 augroup filetype_typescriptreact
   autocmd!
