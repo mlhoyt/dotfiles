@@ -1,0 +1,4 @@
+#!/usr/bin/env osascript
+
+set volume output volume 1
+get volume settings
