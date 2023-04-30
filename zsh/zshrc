@@ -108,21 +108,10 @@ export NVM_DIR="$HOME/.nvm"
 ## Load nvm bash_completion
 [ -s "${NVM_DIR}/bash_completion" ] && . "${NVM_DIR}/bash_completion"
 
-# hub
-# alias git=hub
-
 # Terraform
 # https://www.terraform.io/docs/configuration/providers.html#provider-plugin-cache
 mkdir -p ${HOME}/.terraform.d/plugin-cache
 export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform.d/plugin-cache"
-
-# Kubernetes
-# source ${HOME}/.kube/setup_env.sh
-
-# MySQL
-export PATH=${PATH}:/usr/local/opt/mysql@5.7/bin
-# https://stackoverflow.com/questions/41887460/select-list-is-not-in-group-by-clause-and-contains-nonaggregated-column-inc
-alias fix-only-full-group-by="mysql -u root -e \"SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));\""
 
 # AWS
 export AWS_PAGER=""
