@@ -331,7 +331,7 @@ let mapleader = "\\"
 "
 
 let g:ale_linters['sql'] = ['pgformatter']
-let g:ale_fixers['sql'] = ['prettier']
+" let g:ale_fixers['sql'] = ['prettier']
 
 "
 " Indentation
