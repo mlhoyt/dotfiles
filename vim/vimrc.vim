@@ -176,6 +176,8 @@ let g:go_highlight_debug = 1
 let g:go_highlight_diagnostic_errors = 0
 let g:go_highlight_diagnostic_warnings = 0
 
+let g:ale_linters['go'] = ['gopls', 'golangci-lint']
+
 augroup filetype_go
   autocmd!
   autocmd FileType go setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
