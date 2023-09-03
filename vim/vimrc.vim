@@ -39,7 +39,6 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'juliosueiras/vim-terraform-completion'
 " Rust
 Plugin 'rust-lang/rust.vim'
-" Plugin 'racer-rust/vim-racer'
 " Lua
 " Python
 " Plugin 'psf/black'
@@ -88,7 +87,14 @@ nnoremap <leader>w <C-w>
 " Git
 "
 
-nnoremap <leader>dh :GitGutterLineHighlightsToggle<CR>
+" Disable command line message when jumping between hunkslighting
+let g:gitgutter_show_msg_on_hunk_jumping = 0
+nmap ]h :GitGutterNextHunk<CR> " default: ]c
+nmap [h :GitGutterPrevHunk<CR> " default: [c
+" Enable diff highlighting
+let g:gitgutter_highlight_lines = 1
+nmap <leader>ghp :GitGutterPreviewHunk<CR>
+nnoremap <leader>gdh :GitGutterLineHighlightsToggle<CR>
 
 let mapleader = ","
 
@@ -123,17 +129,23 @@ nnoremap <leader>t :TagbarToggle<CR>
 "         - This allows you to debug interactions with language servers
 
 let g:ale_linters = {}
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_save = 1
+
 let g:ale_fixers = {}
 let g:ale_fix_on_save = 1
-let g:ale_lint_on_save = 1
+
 " Hover information is displayed in a hovering window.
 " Requires Vim supports the |balloon_show()| function.
 " Does NOT seem to work implying the install Vim does not support the above function.
 " let g:ale_set_balloons=1
 " let g:ale_hover_to_preview=1
 let g:ale_hover_to_floating_preview=1
+
 let g:ale_completion_enabled=1
 set omnifunc=ale#completion#OmniFunc
+
 let g:ale_virtualtext_cursor='current'
 
 "
@@ -240,13 +252,32 @@ let g:rustfmt_autosave = 1
 augroup filetype_rust
   autocmd!
   autocmd FileType rust setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-  " " autocmd FileType rust nnoremap <buffer> gd <Plug>(rust-def)
-  " autocmd FileType rust nnoremap <buffer> gd :call racer#GoToDefinition()<CR>
-  " " autocmd FileType rust nnoremap <buffer> gi <Plug>(rust-doc)
-  " autocmd FileType rust nnoremap <buffer> gi :call racer#ShowDocumentation(0)<CR>
+  " autocmd FileType rust nnoremap <buffer> gd <Plug>(rust-def)
+  " autocmd FileType rust nnoremap <buffer> gi <Plug>(rust-doc)
   autocmd FileType rust nnoremap <buffer> gd :ALEGoToDefinition<CR>
   autocmd FileType rust nnoremap <buffer> gr :ALEFindReferences<CR>
   autocmd FileType rust nnoremap <buffer> gi :ALEHover<CR>
+augroup END
+
+"
+" Elm
+" Reference: https://github.com/elm-tooling/elm-vim
+"
+
+let g:ale_linters['elm'] = ['elm_ls']
+let g:ale_fixers['elm'] = ['elm-format']
+
+" let g:ale_elm_ls_use_global = 0
+" let g:ale_elm_ls_executable = "/path/to/elm-language-server"
+" let g:ale_elm_ls_elm_path = "/opt/homebrew/bin/elm"
+" let g:ale_elm_ls_elm_format_path = "/opt/homebrew/bin/elm-format"
+" let g:ale_elm_ls_elm_test_path = "/path/to/elm-test"
+
+augroup filetype_elm
+  autocmd!
+  autocmd FileType elm nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType elm nnoremap <buffer> gr :ALEFindReferences<CR>
+  autocmd FileType elm nnoremap <buffer> gi :ALEHover<CR>
 augroup END
 
 "
