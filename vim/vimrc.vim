@@ -53,12 +53,15 @@ Plugin 'MaxMEllon/vim-jsx-pretty'
 " Plugin 'peitalin/vim-jsx-typescript'
 " GraphQL
 Plugin 'jparise/vim-graphql'
+" PureScript
+Plugin 'purescript-contrib/purescript-vim'
 " CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
 call vundle#end()
 
 filetype plugin indent on
 syntax on
+colorscheme industry
 
 "
 " Defaults
@@ -92,7 +95,7 @@ let g:gitgutter_show_msg_on_hunk_jumping = 0
 nmap ]h :GitGutterNextHunk<CR> " default: ]c
 nmap [h :GitGutterPrevHunk<CR> " default: [c
 " Enable diff highlighting
-let g:gitgutter_highlight_lines = 1
+" let g:gitgutter_highlight_lines = 1
 nmap <leader>ghp :GitGutterPreviewHunk<CR>
 nnoremap <leader>gdh :GitGutterLineHighlightsToggle<CR>
 
@@ -354,17 +357,31 @@ augroup END
 let g:ale_linters['graphql'] = ['eslint']
 let g:ale_fixers['graphql'] = ['prettier']
 
-" Omni Completion (vim builtin??)
-" trigger = <C-x><C-o>
-
-let mapleader = "\\"
-
 "
 " SQL
 "
 
 let g:ale_linters['sql'] = ['pgformatter']
 " let g:ale_fixers['sql'] = ['prettier']
+
+"
+" PureScript
+"
+
+let g:ale_linters['purescript'] = ['purescript-language-server']
+let g:ale_fixers['purescript'] = ['purs-tidy']
+
+augroup filetype_purescript
+  " autocmd!
+  autocmd FileType purescript nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType purescript nnoremap <buffer> gr :ALEFindReferences<CR>
+  autocmd FileType purescript nnoremap <buffer> gi :ALEHover<CR>
+augroup END
+
+" Omni Completion (vim builtin??)
+" trigger = <C-x><C-o>
+
+let mapleader = "\\"
 
 "
 " Indentation
