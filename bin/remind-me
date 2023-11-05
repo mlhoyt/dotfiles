@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+osascript - "$1" <<EOHI
+on run argv
+  set what to (item 1 of argv)
+  set when to date(today() & " " & "16:15:00")
+  tell application "Reminders"
+    make new reminder with properties {name:what, remind me date:when}
+  end tell
+end run
+
+on today()
+  set {year:y, month:m, day:d} to (current date)
+ 
+  # pad the day and month if single digit
+  # set day_str to text -1 thru -2 of ("00" & d)
+  # set mon_str to text -1 thru -2 of ("00" & (m * 1))
+ 
+  return (m & "/" & d & "/" & y) as string
+end today
+EOHI
