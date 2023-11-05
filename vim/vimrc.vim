@@ -127,9 +127,10 @@ nnoremap <leader>t :TagbarToggle<CR>
 " - debugging notes
 "   - use `:ALEInfo`
 "   - use `:echo g:ale_buffer_info`
-"   - https://github.com/dense-analysis/ale/issues/2137
-"     - use vimrc `let g:ale_command_wrapper = '~/.local/bin/ale-command-wrapper.sh'`
-"         - This allows you to debug interactions with language servers
+
+" Debugging interactions with language servers
+" See: https://github.com/dense-analysis/ale/issues/2137
+" let g:ale_command_wrapper = '~/.local/bin/ale-command-wrapper.sh'
 
 let g:ale_linters = {}
 let g:ale_lint_on_text_changed = 0
