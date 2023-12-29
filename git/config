@@ -21,9 +21,15 @@
   editor = /opt/homebrew/bin/vim
   pager = less -F -X
 
+[log]
+  date = short
+
+[format]
+  pretty = format:"%C(yellow)%h %C(blue)%ad %C(red)%d %C(reset)%s"
+
 [alias]
   logtree = log --graph --all --decorate --oneline --abbrev-commit
-  log10 = log --oneline -10
+  log10 = log -n 10
   stat = status
   branch-current = rev-parse --abbrev-ref HEAD
   files-changed = show --name-only --pretty=""
