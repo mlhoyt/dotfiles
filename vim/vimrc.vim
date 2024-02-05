@@ -39,6 +39,8 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'juliosueiras/vim-terraform-completion'
 " Rust
 Plugin 'rust-lang/rust.vim'
+" Elm
+Plugin 'ElmCast/elm-vim'
 " Lua
 " Python
 " Plugin 'psf/black'
@@ -224,6 +226,7 @@ let g:ale_fixers['terraform'] = ['terraform']
 augroup filetype_terraform
   autocmd!
   autocmd FileType terraform setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType terraform setlocal foldenable foldmethod=indent
   autocmd FileType terraform nnoremap <buffer> gd :ALEGoToDefinition<CR>
   autocmd FileType terraform nnoremap <buffer> gr :ALEFindReferences<CR>
   autocmd FileType terraform nnoremap <buffer> gi :ALEHover<CR>
@@ -266,9 +269,12 @@ augroup END
 "
 " Elm
 " Reference: https://github.com/elm-tooling/elm-vim
+" brew install elm-format
+" npm install -g elm-oracle -> ~/.nvm/versions/node/v18.19.0/bin/elm-oracle
 "
 
-let g:ale_linters['elm'] = ['elm_ls']
+" let g:ale_linters['elm'] = ['elm_ls']
+let g:ale_linters['elm'] = []
 let g:ale_fixers['elm'] = ['elm-format']
 
 " let g:ale_elm_ls_use_global = 0
@@ -300,6 +306,7 @@ augroup END
 augroup filetype_python
   autocmd!
   autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType python setlocal foldenable foldmethod=indent
 augroup END
 
 " autocmd BufWritePost *.py silent! execute ':Black'
@@ -392,11 +399,13 @@ let mapleader = "\\"
 
 "
 " Code Folding
+" Reference: https://www.vimfromscratch.com/articles/vim-folding
 "
 
 set foldmethod=syntax
-set foldnestmax=1
+" set foldnestmax=1
 set foldlevelstart=10
+set foldcolumn=2
 
 "
 " General Vim settings
