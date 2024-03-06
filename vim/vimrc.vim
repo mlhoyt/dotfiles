@@ -269,23 +269,24 @@ augroup END
 "
 " Elm
 " Reference: https://github.com/elm-tooling/elm-vim
+" Reference: https://github.com/elm-tooling/elm-language-server
+" Build elm-language-server locally at ~/src/github.com/elm-tooling/elm-language-server/
+" - git pull
+" - npm install
+" - npm run compile
+" - npm run link
 " brew install elm-format
-" npm install -g elm-oracle -> ~/.nvm/versions/node/v18.19.0/bin/elm-oracle
+" npm install -g elm-test
 "
 
-" let g:ale_linters['elm'] = ['elm_ls']
-let g:ale_linters['elm'] = []
+let g:ale_linters['elm'] = ['elm_ls']
 let g:ale_fixers['elm'] = ['elm-format']
-
-" let g:ale_elm_ls_use_global = 0
-" let g:ale_elm_ls_executable = "/path/to/elm-language-server"
-" let g:ale_elm_ls_elm_path = "/opt/homebrew/bin/elm"
-" let g:ale_elm_ls_elm_format_path = "/opt/homebrew/bin/elm-format"
-" let g:ale_elm_ls_elm_test_path = "/path/to/elm-test"
 
 augroup filetype_elm
   autocmd!
+  autocmd FileType elm setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType elm nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  autocmd FileType elm nnoremap <buffer> gt :ALEGoToTypeDefinition<CR>
   autocmd FileType elm nnoremap <buffer> gr :ALEFindReferences<CR>
   autocmd FileType elm nnoremap <buffer> gi :ALEHover<CR>
 augroup END
