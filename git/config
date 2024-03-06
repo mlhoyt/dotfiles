@@ -25,7 +25,7 @@
   date = short
 
 [format]
-  pretty = format:"%C(yellow)%h %C(blue)%ad %C(red)%d %C(reset)%s"
+  pretty = format:"%C(yellow)%h %C(blue)%ai %C(red)%d %C(reset)%s"
 
 [alias]
   logtree = log --graph --all --decorate --oneline --abbrev-commit
