@@ -32,7 +32,7 @@ bindkey -v
 
 tabs -2
 
-alias ll="ls -al"
+alias ll="ls -alh -D '%Y-%m-%d %H:%M'"
 
 export EDITOR="vim"
 
