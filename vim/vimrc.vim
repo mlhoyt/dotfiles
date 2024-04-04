@@ -405,7 +405,7 @@ let mapleader = "\\"
 
 set foldmethod=syntax
 " set foldnestmax=1
-set foldlevelstart=10
+set foldlevelstart=20
 set foldcolumn=2
 
 "
