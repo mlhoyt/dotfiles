@@ -34,7 +34,7 @@ tabs -2
 
 alias ll="ls -alh -D '%Y-%m-%d %H:%M'"
 
-export EDITOR="vim"
+export EDITOR="hx"
 
 # grep
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.terraform,node_modules}"
