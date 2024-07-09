@@ -81,6 +81,9 @@ export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 # GPG
 export MANPATH="/usr/local/MacGPG2/share/man:${MANPATH}";
 
+# 1Password Shell Plugins
+source ${HOME}/.config/op/plugins.sh
+
 # Rust
 if test -f "${HOME}/.cargo/env"; then
   source "${HOME}/.cargo/env"
