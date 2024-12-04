@@ -92,8 +92,7 @@ fi
 # export PATH=${PATH}:${HOME}/rust/src/github.com/racer-rust/racer/target/release
 
 # Golang (brew install golang)
-export GOPATH=${HOME}/src
-export GOBIN=${GOPATH}/bin
+export GOBIN=${HOME}/.go/bin
 export PATH=${PATH}:${GOBIN}
 
 # Python
