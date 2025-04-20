@@ -116,14 +116,29 @@ export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform.d/plugin-cache"
 export AWS_PAGER=""
 
 # Prompt
-function get_pwd () {
+function prompt_user_machine () {
+  echo -ne "%F{black}%K{white}${USER}@%m%f%k"
+}
+
+function prompt_pwd () {
+  pwdInfo="$(basename ${PWD})"
   if [[ ${PWD} = ${HOME} ]]; then
-    echo "~"
+    pwdInfo="~"
+  fi
+  echo -ne "%F{black}%K{yellow}${pwdInfo}%f%k"
+}
+
+function prompt_nix_info () {
+  if [[ -n "${NIX_GCROOT}" ]]
+  then
+    nixInfo="${NIX_GCROOT#/nix/store/[a-zA-Z0-9]*-}"
+    echo -ne "%F{blue}nix:(%F{red}${nixInfo}%F{blue})%f"
   else
-    echo "$(basename ${PWD})"
+    echo -n ""
   fi
 }
-export PROMPT='%{$fg[black]$bg[white]%}${USER}@%m%{$reset_color%} %{$fg[black]$bg[yellow]%}$(get_pwd)%{$reset_color%} $(git_prompt_info)'$'\n''$ '
+
+export PROMPT='$(prompt_user_machine) $(prompt_pwd) $(git_prompt_info)$(prompt_nix_info)'$'\n''$ '
 
 ######################################################################
 # Local configuration
