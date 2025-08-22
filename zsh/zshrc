@@ -32,7 +32,7 @@ bindkey -v
 
 tabs -2
 
-alias ll="ls -alh -D '%Y-%m-%d %H:%M'"
+alias ll="/bin/ls -G -alh -D '%Y-%m-%d %H:%M'"
 
 export EDITOR="hx"
 
