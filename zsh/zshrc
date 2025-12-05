@@ -84,6 +84,9 @@ export MANPATH="/usr/local/MacGPG2/share/man:${MANPATH}";
 # 1Password Shell Plugins
 source ${HOME}/.config/op/plugins.sh
 
+# Bat
+export BAT_PAGER=never
+
 # Rust
 if test -f "${HOME}/.cargo/env"; then
   source "${HOME}/.cargo/env"
