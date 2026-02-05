@@ -87,13 +87,6 @@ source ${HOME}/.config/op/plugins.sh
 # Bat
 export BAT_PAGER=never
 
-# Rust
-if test -f "${HOME}/.cargo/env"; then
-  source "${HOME}/.cargo/env"
-fi
-
-# export PATH=${PATH}:${HOME}/rust/src/github.com/racer-rust/racer/target/release
-
 # Golang (brew install golang)
 export GOBIN=${HOME}/.go/bin
 export PATH=${PATH}:${GOBIN}
@@ -119,11 +112,11 @@ export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform.d/plugin-cache"
 export AWS_PAGER=""
 
 # Prompt
-function prompt_user_machine () {
-  echo -ne "%F{black}%K{white}${USER}@%m%f%k"
+function prompt_timestamp () {
+  echo -ne "%F{black}%K{white}%D %T%f%k"
 }
 
-function prompt_pwd () {
+function prompt_pwd_basename () {
   pwdInfo="$(basename ${PWD})"
   if [[ ${PWD} = ${HOME} ]]; then
     pwdInfo="~"
@@ -131,17 +124,7 @@ function prompt_pwd () {
   echo -ne "%F{black}%K{yellow}${pwdInfo}%f%k"
 }
 
-function prompt_nix_info () {
-  if [[ -n "${NIX_GCROOT}" ]]
-  then
-    nixInfo="${NIX_GCROOT#/nix/store/[a-zA-Z0-9]*-}"
-    echo -ne "%F{blue}nix:(%F{red}${nixInfo}%F{blue})%f"
-  else
-    echo -n ""
-  fi
-}
-
-export PROMPT='$(prompt_user_machine) $(prompt_pwd) $(git_prompt_info)$(prompt_nix_info)'$'\n''$ '
+export PROMPT='$(prompt_timestamp) $(prompt_pwd_basename) $(git_prompt_info)'$'\n''$ '
 
 ######################################################################
 # Local configuration
