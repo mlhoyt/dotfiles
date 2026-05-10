@@ -65,7 +65,7 @@ export MANPATH="/usr/local/MacGPG2/share/man:${MANPATH}";
 source ${HOME}/.config/op/plugins.sh
 
 # Bat
-export BAT_PAGER=never
+export BAT_PAGING=never
 
 # Golang (brew install golang)
 export GOBIN=${HOME}/.go/bin
