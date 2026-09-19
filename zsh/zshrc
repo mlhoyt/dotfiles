@@ -58,6 +58,10 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}";
 export MANPATH="/opt/homebrew/share/man:${MANPATH}";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
+# # CXX
+# cltSdk="$(xcrun --show-sdk-path)"
+# export CXXFLAGS="-isysroot ${cltSkd} -isystem ${cltSdk}/usr/include/c++/v1"
+
 # GPG
 export MANPATH="/usr/local/MacGPG2/share/man:${MANPATH}";
 
@@ -66,6 +70,11 @@ source ${HOME}/.config/op/plugins.sh
 
 # Bat
 export BAT_PAGING=never
+
+# Haskell
+if test -d ${HOME}/.ghcup/bin; then
+  export PATH=${PATH}:${HOME}/.ghcup/bin
+fi
 
 # Golang (brew install golang)
 export GOBIN=${HOME}/.go/bin
